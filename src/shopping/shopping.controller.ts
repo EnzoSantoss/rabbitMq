@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { ShoppingService } from './shopping.service';
 import { CreateShoppingDto } from './dto/create-shopping.dto';
 import { UpdateShoppingDto } from './dto/update-shopping.dto';
-import { EventPattern } from '@nestjs/microservices';
+import { EventPattern, MessagePattern } from '@nestjs/microservices';
 
 @Controller('shopping')
 export class ShoppingController {
@@ -28,10 +28,9 @@ export class ShoppingController {
     return this.shoppingService.findOne(+id);
   }
 
-  @EventPattern('hello')
+  @MessagePattern('hello')
   async hello(data: any) {
     try {
-      console.log('queue');
       return this.shoppingService.create(data);
     } catch (e) {
       console.log(e);
