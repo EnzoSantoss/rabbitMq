@@ -21,8 +21,8 @@ export class ShoppingService {
     });
   }
 
-  findAll() {
-    return `This action returns all shopping`;
+  async findAll() {
+    return await this.prisma.product.findMany();
   }
 
   findOne(id: number) {
