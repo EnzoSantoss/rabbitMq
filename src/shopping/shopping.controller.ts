@@ -9,7 +9,12 @@ export class ShoppingController {
 
   @Post()
   create(@Body() createShoppingDto: CreateShoppingDto) {
-    return this.shoppingService.create(createShoppingDto);
+    try {
+      return this.shoppingService.create(createShoppingDto);
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
   }
 
   @Get()

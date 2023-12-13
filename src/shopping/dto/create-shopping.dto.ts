@@ -1,3 +1,5 @@
 export class CreateShoppingDto {
-  test: string;
+  name: string;
+  value: number;
+  description?: string;
 }
